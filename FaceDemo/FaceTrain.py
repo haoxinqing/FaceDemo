@@ -25,44 +25,46 @@ def Load_csv(filepath, images = [], labels = []):
     else:
         print('invalid csv file')
 
-# function call
-labfile = os.path.abspath(os.path.join(os.path.curdir, 'at.txt'))
-if False == os.path.exists(labfile):
-    pass
-    # create label file
+def Face_Train():
+    # function call
+    labfile = os.path.abspath(os.path.join(os.path.curdir, 'at.txt'))
+    if False == os.path.exists(labfile):
+        pass
+        # create label file
 
-# label files
-images = []
-labels = []
-Load_csv(labfile, images, labels)
+    # label files
+    images = []
+    labels = []
+    Load_csv(labfile, images, labels)
 
-# convert into numpy arrays
-faces = []
-for item in images:
-    face = cv.imread(item, cv.IMREAD_GRAYSCALE)   # convert into gray image
-    faces.append(face)
+    # convert into numpy arrays
+    faces = []
+    for item in images:
+        face = cv.imread(item, cv.IMREAD_GRAYSCALE)   # convert into gray image
+        faces.append(face)
 
-if len(images) < 1:
-    print('Train dataset is not enough...')
-else:
-    trainsfaces = faces[0:len(faces) - 10]
-    trainlabels = labels[0:len(labels) - 10]
-    testfaces = faces[-10:]
-    testlabels = labels[-10:]
+    if len(images) < 1:
+        print('Train dataset is not enough...')
+    else:
+        trainsfaces = faces[0:len(faces) - 10]
+        trainlabels = labels[0:len(labels) - 10]
+        testfaces = faces[-10:]
+        testlabels = labels[-10:]
 
-    # train face recognizer
-    recognizer = cv.face_EigenFaceRecognizer.create()
-    recognizer.train(faces, np.array(labels))
-    #recognizer.train(trainsfaces, np.array(trainlabels))
-    recognizer.save('facemodel.yml')
+        # train face recognizer
+        recognizer = cv.face_EigenFaceRecognizer.create()
+        recognizer.train(faces, np.array(labels))
+        #recognizer.train(trainsfaces, np.array(trainlabels))
+        recognizer.save('facemodel.yml')
     
-    # test face recognizer
-    cv.namedWindow('Test')
-    for faceitem in testfaces:
-        pre_label = recognizer.predict(faceitem)
-        img = faceitem.copy()
-        cv.putText(img, 's' + str(pre_label[0]), (50, 50), cv.FONT_HERSHEY_PLAIN, 1.5, (0, 255, 0), 2)
-        cv.imshow('Test', img)
-        cv.waitKey(0)
+        # test face recognizer
+        cv.namedWindow('Test')
+        for faceitem in testfaces:
+            pre_label = recognizer.predict(faceitem)
+            img = faceitem.copy()
+            cv.putText(img, 's' + str(pre_label[0]), (50, 50), cv.FONT_HERSHEY_PLAIN, 1.5, (0, 255, 0), 2)
+            cv.imshow('Test', img)
+            cv.waitKey(0)
     
-    cv.destroyAllWindows()
+        cv.destroyAllWindows()
+# function Face_Train end

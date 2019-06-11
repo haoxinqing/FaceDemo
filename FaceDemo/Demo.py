@@ -1,10 +1,35 @@
 import os
 import cv2 as cv
+import sys
+#sys.path.append(r'cvtPGM2JPG')
+#sys.path.append(r'TakePhoto')
+#sys.path.append(r'createLabelFile')
+#sys.path.append(r'FaceTrain')
+# step functions
+from cvtPGM2JPG import *
+from TakePhoto import *
+from createLabelFile import *
+from FaceTrain import *
 
 '''
 real time face predict demo
+step 1. download ORL face dataset, and convert PGM to JPG;
+step 2. (optional) take your photos to extern the face dataset;
+step 3. create Label File, and train the face model;
+step 4. use load train model to do real-time face recognization demo
 '''
 
+## step 1 download dataset
+Download_Data()
+
+## step 2 take your photo
+Take_Photo()
+
+## step 3 train face model
+Create_LabelFile()
+Face_Train()
+
+## step 4 use model
 # use opencv pre-trianed xml
 facexml = 'D:/Program Files (x86)/Microsoft Visual Studio/Shared/Python36_64/Lib/site-packages/cv2/data/haarcascade_frontalface_default.xml'
 face_cascade = cv.CascadeClassifier(facexml)
