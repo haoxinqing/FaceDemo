@@ -102,3 +102,13 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Temp data
+.vs/
+FaceDemo/att_faces_jpg/
+FaceDemo/*.txt
+FaceDemo/*.yml
+
+# ORL Face Database
+att_faces/
+
