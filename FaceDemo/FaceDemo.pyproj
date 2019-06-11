@@ -5,7 +5,7 @@
     <ProjectGuid>e31f2994-3849-4a8c-9cc3-6afac01d484a</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Demo.py</StartupFile>
+    <StartupFile>cvtPGM2JPG.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
