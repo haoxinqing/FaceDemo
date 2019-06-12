@@ -105,6 +105,7 @@ venv.bak/
 
 # Temp data
 .vs/
+temp/
 FaceDemo/att_faces_jpg/
 FaceDemo/*.txt
 FaceDemo/*.yml
