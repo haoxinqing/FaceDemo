@@ -7,6 +7,11 @@ def Take_Photo():
     if False == os.path.exists(dataset_path):
         os.mkdir(dataset_path)
 
+    print('Do you want take your photo into face database? (Y or N)')
+    choice = input();
+    if choice.upper() == 'N':
+        return;
+
     # find existing person number
     nPerson = 1
     for item in os.listdir(dataset_path):

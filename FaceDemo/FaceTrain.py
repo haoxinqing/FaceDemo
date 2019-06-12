@@ -57,14 +57,14 @@ def Face_Train():
         #recognizer.train(trainsfaces, np.array(trainlabels))
         recognizer.save('facemodel.yml')
     
-        # test face recognizer
-        cv.namedWindow('Test')
-        for faceitem in testfaces:
-            pre_label = recognizer.predict(faceitem)
-            img = faceitem.copy()
-            cv.putText(img, 's' + str(pre_label[0]), (50, 50), cv.FONT_HERSHEY_PLAIN, 1.5, (0, 255, 0), 2)
-            cv.imshow('Test', img)
-            cv.waitKey(0)
+        ## test face recognizer
+        #cv.namedWindow('Test')
+        #for faceitem in testfaces:
+        #    pre_label = recognizer.predict(faceitem)
+        #    img = faceitem.copy()
+        #    cv.putText(img, 's' + str(pre_label[0]), (50, 50), cv.FONT_HERSHEY_PLAIN, 1.5, (0, 255, 0), 2)
+        #    cv.imshow('Test', img)
+        #    cv.waitKey(0)
     
         cv.destroyAllWindows()
 # function Face_Train end
